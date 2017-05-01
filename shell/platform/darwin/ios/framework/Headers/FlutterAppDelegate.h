@@ -24,9 +24,8 @@
  */
 FLUTTER_EXPORT
 @interface FlutterAppDelegate : UIResponder<UIApplicationDelegate>
-
 @property(strong, nonatomic) UIWindow* window;
-
+@property(assign, nonatomic) id<UIApplicationDelegate> delegate;
 @end
 
 #endif  // FLUTTER_FLUTTERDARTPROJECT_H_
