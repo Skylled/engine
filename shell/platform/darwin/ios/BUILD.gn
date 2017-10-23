@@ -23,6 +23,7 @@ shared_library("flutter_framework_dylib") {
     "framework/Headers/FlutterDartProject.h",
     "framework/Headers/FlutterMacros.h",
     "framework/Headers/FlutterPlugin.h",
+    "framework/Headers/FlutterTexture.h",
     "framework/Headers/FlutterViewController.h",
     "framework/Headers/FlutterNavigationController.h",
     "framework/Source/FlutterAppDelegate.mm",
@@ -53,6 +54,8 @@ shared_library("flutter_framework_dylib") {
     "framework/Source/platform_message_router.mm",
     "framework/Source/vsync_waiter_ios.h",
     "framework/Source/vsync_waiter_ios.mm",
+    "ios_external_texture_gl.h",
+    "ios_external_texture_gl.mm",
     "ios_gl_context.h",
     "ios_gl_context.mm",
     "ios_surface.h",
@@ -91,9 +94,10 @@ shared_library("flutter_framework_dylib") {
   defines = [ "FLUTTER_FRAMEWORK" ]
 
   libs = [
+    "CoreMedia.framework",
+    "CoreVideo.framework",
     "UIKit.framework",
     "OpenGLES.framework",
-    "AVFoundation.framework",
     "AudioToolbox.framework",
     "QuartzCore.framework",
   ]
@@ -169,9 +173,10 @@ copy("framework_headers") {
     "framework/Headers/FlutterCodecs.h",
     "framework/Headers/FlutterDartProject.h",
     "framework/Headers/FlutterMacros.h",
-    "framework/Headers/FlutterPlugin.h",
-    "framework/Headers/FlutterViewController.h",
     "framework/Headers/FlutterNavigationController.h",
+    "framework/Headers/FlutterPlugin.h",
+    "framework/Headers/FlutterTexture.h",
+    "framework/Headers/FlutterViewController.h",
   ]
   outputs = [
     "$_flutter_framework_dir/Headers/{{source_file_part}}",

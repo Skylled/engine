@@ -8,6 +8,7 @@
 #include <memory>
 
 #include "flutter/shell/common/platform_view.h"
+#include "flutter/shell/platform/darwin/ios/framework/Headers/FlutterTexture.h"
 #include "flutter/shell/platform/darwin/ios/framework/Source/accessibility_bridge.h"
 #include "flutter/shell/platform/darwin/ios/framework/Source/platform_message_router.h"
 #include "flutter/shell/platform/darwin/ios/ios_surface.h"
@@ -49,6 +50,8 @@ class PlatformViewIOS : public PlatformView {
 
   void HandlePlatformMessage(
       fxl::RefPtr<blink::PlatformMessage> message) override;
+
+  size_t RegisterExternalTexture(NSObject<FlutterTexture>* texture);
 
   void UpdateSemantics(std::vector<blink::SemanticsNode> update) override;
 
